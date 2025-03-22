@@ -1,0 +1,20 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Виконати pipeline, коли зміни будуть відправлені в основну гілку (main)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Вказуємо, що pipeline буде виконуватись на останній версії Ubuntu
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2  # Крок для перевірки (checkout) вашого репозиторію
+
+    - name: Збірка
+      run: mvn clean install  # Виконання команду для збірки проекту
+
+    - name: Розгортання
+      run: echo "Розгортання завершено."  # Це симулює етап розгортання. Можна замінити реальним скриптом для розгортання
