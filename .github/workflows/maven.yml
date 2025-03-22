@@ -1,0 +1,22 @@
+name: Java CI with Maven
+
+on: 
+  push:
+    branches:
+      - main  # або будь-яка інша гілка, яку ти хочеш відстежувати
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Використовуємо найновішу версію Ubuntu для запуску
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2  # Крок для перевірки коду з репозиторію
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2  # Встановлюємо JDK
+        with:
+          java-version: '17'  # Вказуємо версію JDK, яку будемо використовувати
+
+      - name: Build with Maven
+        run: mvn clean install  # Команда для зборки проєкту з Maven
